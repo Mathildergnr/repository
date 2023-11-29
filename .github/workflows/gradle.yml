@@ -54,11 +54,6 @@ jobs:
   #      with:
   #        name: Package
   #        path: build/libs
-
-
-
-
-
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -71,10 +66,9 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
       - name: Package with Gradle
-
         uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
         with:
           arguments: bootJar
-            - uses: actions/checkout@v2
+      #      - uses: actions/checkout@v2
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag server:$(date +%s)
